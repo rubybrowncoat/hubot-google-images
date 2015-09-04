@@ -7,17 +7,17 @@
 #   HUBOT_MUSTACHIFY_URL - Optional. Allow you to use your own mustachify instance.
 #
 # Commands:
-#   hubot isch <query> - The Original. Queries Google Images for <query> and returns a random top result.
+#   hubot img <query> - The Original. Queries Google Images for <query> and returns a random top result.
 #   hubot gif <query> - The same thing as `isch`, except adds a few parameters to try to return an animated GIF instead.
 #   hubot mustache me <url> - Adds a mustache to the specified URL.
 #   hubot mustache me <query> - Searches Google Images for the specified query and mustaches it.
 
 module.exports = (robot) ->
-  robot.respond /(isch)( me)? (.*)/i, (msg) ->
+  robot.respond /(img|image)( me)? (.*)/i, (msg) ->
     imageMe msg, msg.match[3], (url) ->
       msg.send url
 
-  robot.respond /gif( me)? (.*)/i, (msg) ->
+  robot.respond /(gif|animate)( me)? (.*)/i, (msg) ->
     imageMe msg, msg.match[2], true, (url) ->
       msg.send url
 
